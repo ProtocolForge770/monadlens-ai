@@ -1,0 +1,15 @@
+export function shortAddr(addr: string): string {
+  return addr.length > 13 ? `${addr.slice(0, 6)}…${addr.slice(-4)}` : addr;
+}
+
+export function timeAgo(ts: number): string {
+  const s = Math.max(1, Math.floor(Date.now() / 1000) - ts);
+  if (s < 60) return `${s}s ago`;
+  const m = Math.floor(s / 60);
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h / 24)}d ago`;
+}
+
+export const EXPLORER = "https://testnet.monadexplorer.com";
