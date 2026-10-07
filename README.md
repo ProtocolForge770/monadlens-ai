@@ -2,6 +2,10 @@
 
 **Live whale-move & new-launch radar for Monad testnet — explained by AI, drafted as X threads.**
 
+🚀 **Live demo:** https://monadlens-ai.vercel.app/
+🎬 **Demo video (≤3 min):** https://youtu.be/3nNJgrhuiTA
+🎤 **Pitch video:** https://youtu.be/BuTTaQWBEto
+
 Built for the **Monad Metropolis Hackathon** (build phase Sep 1 – Oct 14, 2026).
 
 - **Main track:** Track 4 — *Trust, Identity & AI Infrastructure*
@@ -18,7 +22,7 @@ Built for the **Monad Metropolis Hackathon** (build phase Sep 1 – Oct 14, 2026
 ## How it works
 
 1. **Live feed** (`/`): the Next.js API polls Monad testnet's free public RPC, scans the latest blocks, and flags:
-   - 🐋 **Whale moves** — native transfers ≥ `WHALE_THRESHOLD_MON` (default 1000 MON)
+   - 🐋 **Whale moves** — native transfers ≥ `WHALE_THRESHOLD_MON` (default 10 MON)
    - 🚀 **New launches** — contract deployments
 2. **AI Explain** (✨ button on every event): sends the event to KIMI (fallback: Qwen) via OpenAI-compatible `/chat/completions`, returns a plain-language explanation + a 3–5 tweet X thread draft you can copy.
 3. **Address lookup** (`/address?addr=0x…`): balance, tx count, and recent activity for any Monad address, with per-event AI explanations.
@@ -39,7 +43,7 @@ npm run dev            # → http://localhost:3000
 | Var | Required | What |
 |---|---|---|
 | `MONAD_TESTNET_RPC` | No (default works) | Monad testnet RPC — verified: `https://testnet-rpc.monad.xyz` (chain id 10143) |
-| `WHALE_THRESHOLD_MON` | No | Whale flag threshold (default `1000`) |
+| `WHALE_THRESHOLD_MON` | No | Whale flag threshold (default `10`) |
 | `KIMI_API_KEY` | Recommended | Moonshot AI key → https://platform.moonshot.ai |
 | `QWEN_API_KEY` | Recommended | Alibaba Bailian key (OpenAI-compatible mode) |
 | `LLM_PROVIDER` | No | `kimi` (default) or `qwen` — the other is tried as fallback |
@@ -88,13 +92,12 @@ components/
   EventCard.tsx         # event card + explain panel
 ```
 
-## Status / TODO before submission
+## Status
 
-- [x] Working live feed on Monad testnet RPC
-- [x] AI Explain with KIMI + Qwen fallback
-- [x] Address lookup
-- [x] Nansen hook (key-gated)
-- [ ] Real Nansen endpoint mapping (needs the actual Nansen API/MCP access for Monad)
-- [ ] Polish: empty-state UX, mobile tweaks, logo/graphic (≤3 MB) for submission
-- [ ] Demo video (≤3 min) + pitch video (≤2 min)
-- [ ] Create team + project on the Metropolis portal, select Track 4 + bounties
+✅ **Submitted to Monad Metropolis** — entry "Ready for judging" (Track 4: Trust, Identity & AI Infrastructure).
+✅ Live on Vercel: https://monadlens-ai.vercel.app/
+✅ Demo video + pitch video recorded.
+✅ KIMI primary / Qwen fallback explain pipeline working.
+✅ Nansen label hook (key-gated).
+
+**Roadmap:** real-time alerts (Telegram/X), multi-signal smart-money scoring, mainnet support after launch.
